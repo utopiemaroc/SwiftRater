@@ -334,7 +334,7 @@ import StoreKit
     }
 
     #if os(iOS)
-    private func showRatingAlert(host: UIViewController?, force: Bool) {
+    public func showRatingAlert(host: UIViewController? = UIApplication.shared.keyWindow?.rootViewController, force: Bool) {
         NSLog("[SwiftRater] Trying to show review request dialog.")
         if #available(iOS 10.3, *), SwiftRater.useStoreKitIfAvailable, !force {
             SKStoreReviewController.requestReview()
@@ -369,7 +369,7 @@ import StoreKit
         }
     }
     
-    private func rateAppWithAppStore() {
+    public func rateAppWithAppStore() {
         #if arch(i386) || arch(x86_64)
             print("APPIRATER NOTE: iTunes App Store is not supported on the iOS simulator. Unable to open App Store page.");
         #else
